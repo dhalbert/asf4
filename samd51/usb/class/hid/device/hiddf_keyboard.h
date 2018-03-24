@@ -88,4 +88,14 @@ int32_t hiddf_keyboard_keys_state_change(struct hiddf_kb_key_descriptors keys_de
  */
 uint32_t hiddf_keyboard_get_version(void);
 
+/**
+ * \brief Send a user-supplied report.
+ */
+int32_t hiddf_keyboard_write(uint8_t *buf, uint32_t size);
+
+/**
+ * \brief USB HID Keyboard Write Register Callback
+ */
+int32_t hiddf_keyboard_register_write_callback(FUNC_PTR func);
+
 #endif /* USBDF_HID_KEYBOARD_H_ */

@@ -377,3 +377,20 @@ uint32_t hiddf_keyboard_get_version(void)
 {
 	return HIDDF_KEYBOARD_VERSION;
 }
+
+/**
+ * \brief Send a user-supplied report.
+ */
+int32_t hiddf_keyboard_write(uint8_t *buf, uint32_t size)
+{
+	return usbdc_xfer(_hiddf_keyboard_funcd.func_ep_in, buf, size, false);
+}
+
+/*
+ * \brief USB HID Keyboard Write Register Callback
+ */
+int32_t hiddf_keyboard_register_write_callback(FUNC_PTR func)
+{
+        usb_d_ep_register_callback(_hiddf_keyboard_funcd.func_ep_in, USB_D_EP_CB_XFER, func);
+	return ERR_NONE;
+}

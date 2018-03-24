@@ -92,4 +92,14 @@ int32_t hiddf_mouse_button_change(enum hiddf_mouse_button_state b_state, enum hi
  */
 uint32_t hiddf_mouse_get_version(void);
 
+/**
+ * \brief Send a user-supplied report
+ */
+int32_t hiddf_mouse_write(uint8_t *buf, uint32_t size);
+
+/**
+ * \brief USB HID Mouse Write Register Callback
+ */
+int32_t hiddf_mouse_register_write_callback(FUNC_PTR func);
+
 #endif /* USBDF_CDC_ACM_SER_H_ */
